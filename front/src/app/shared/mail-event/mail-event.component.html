@@ -1,0 +1,7 @@
+
+<div class="mail-event" [ngClass]="{'unSeen': !mailEvent.acknowledged }" (click)="ackEvent()">
+    <div class="data">
+        <span>Date: {{ mailEvent.date  | date:'medium' }}</span>
+        <h4>{{getDescription(mailEvent.type)}}</h4>
+    </div>
+</div>

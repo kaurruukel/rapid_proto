@@ -1,0 +1,31 @@
+
+@main: #9ab2ca;
+
+.mail-event {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 8px;
+    transition-duration: 0.2s;
+
+    border: 1px solid @main;
+    border-radius: 4px;
+
+    .data {
+        display: flex;
+        flex-direction: column;
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+.unSeen {
+    box-shadow: 4px 4px @main;
+    cursor: pointer;
+}
+
+.unSeen:hover {
+    box-shadow: 5px 5px 10px @main;
+}

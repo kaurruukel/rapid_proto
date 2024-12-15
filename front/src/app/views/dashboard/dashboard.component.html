@@ -1,0 +1,17 @@
+<div class="dashboard-container">
+    <div class="dashboard-container__contents">
+        <div class="dashboard-container__header">
+            <h2>Notifications</h2>
+            <div class="unread" *ngIf="unSeen() > 0">
+                <span>
+                  {{ unSeen() }}
+                </span>
+            </div>
+        </div>
+        <div class="notifications">
+            <div *ngFor="let mailEvent of mailEventsService.mailEvents()">
+                <app-mail-event [mailEvent]="mailEvent"/>
+            </div>
+        </div>
+    </div>
+</div>
