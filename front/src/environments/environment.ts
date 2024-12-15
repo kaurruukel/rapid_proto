@@ -1,3 +1,3 @@
 export const environment = {
-    backendUrl: 'https://rapid-proto-go.onrender.com'
+    backendUrl: 'https://rapid-proto.onrender.com'
 };
