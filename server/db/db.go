@@ -50,6 +50,11 @@ func (e *Events) AddEvent(event Event) (string, error) {
 	return newID, err
 }
 
+func (e *Events) DeleteEvents() error {
+	_, err := e.db.Exec("DELETE FROM events");
+	return err;
+}
+
 func (e *Events) GetEvents() ([]Event, error) {
 	rows, err := e.db.Query("SELECT id, event_type, acknowledged, date FROM events ORDER BY date DESC")
 	if err != nil {

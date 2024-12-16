@@ -47,6 +47,7 @@ func (s *Server) routes() {
 	http.HandleFunc("GET /events", s.corsMiddleware(s.handleGetEvents))
 	http.HandleFunc("POST /events", s.corsMiddleware(s.handleCreateEvent))
 	http.HandleFunc("PATCH /events/", s.corsMiddleware(s.handleUpdateEvent))
+	http.HandleFunc("DELETE /events/", s.corsMiddleware(s.handleDeleteEvents))
 	http.HandleFunc("/", s.corsMiddleware(s.unhandled))
 
 }
@@ -79,6 +80,15 @@ func (s *Server) handleGetEvents(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	returnJson(w, events)
+}
+
+func (s *Server) handleDeleteEvents(w http.ResponseWriter, r *http.Request) {
+	err := s.sql.DeleteEvents()
+	if err != nil {
+		http.Error(w, "Error getting events", http.StatusInternalServerError)
+		return
+	}
+	returnJson(w, "success")
 }
 
 func (s *Server) unhandled(w http.ResponseWriter, r *http.Request) { 
